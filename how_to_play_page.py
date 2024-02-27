@@ -12,26 +12,25 @@ class HowToPlay():
         self.back_button = Button(self.screen, 'Back', 40, 53, 100, 40, 16)
 
         # Define Fonts
-        self.heading_font = pygame.font.Font('assets/fonts/Akira.otf', 48)
-        self.title_font = pygame.font.Font('assets/fonts/Akira.otf', 32)
+        self.heading_font = pygame.font.Font('assets/fonts/Akira.otf', 42)
+        self.title_font = pygame.font.Font('assets/fonts/Akira.otf', 30)
         self.text_font = pygame.font.Font('assets/fonts/arial.ttf', 24)
 
         # How to play text
         self.htp_text1 = """
-        Two player mode allows two players to compete each other
-        to get 4 discs in a row. The players each take turns to place
+        Two player mode allows two players to compete each other to 
+        get 4 discs in a row. The players each take turns to place 
         their coloured disc in one of the rows and the first player to
         get 4 of them in a row vertically, horizontally or diagonally
         will win scoring themselves one point.
         """
 
         self.htp_text2 = """
-        AI Bot mode allows one player to play against a
-        computerised player also known as a bot. The rules of the
-        game are exactly the same as the two-player mode where
-        the first player to get 4 of their coloured discs in a row
-        vertically, horizontally or diagonally will win scoring
-        themselves one point.
+        AI Bot mode allows one player to play against a computerised 
+        player also known as a bot. The rules of the game are exactly
+        the same as the two-player mode where the first player to get
+        4 of their coloured discs in a row vertically, horizontally or
+        diagonally will win scoring themselves one point.
         """
 
         self.heading = self.heading_font.render('HOW TO PLAY', True, 'yellow')
