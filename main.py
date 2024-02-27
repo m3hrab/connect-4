@@ -1,9 +1,10 @@
 import pygame 
+import sys
 from settings import Settings
 
 # game pages
 from main_menu_page import MainMenu
-
+from how_to_play_page import HowToPlay
 
 def run_game():
     pygame.init()
@@ -15,7 +16,7 @@ def run_game():
 
     # Instances of game pages
     mainmenu_page = MainMenu(screen, settings)
-
+    how_to_play_page = HowToPlay(screen, settings)
 
     # Set the current page
     current_page = mainmenu_page
@@ -26,15 +27,18 @@ def run_game():
         # Event loop 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                sys.exit()
 
             flag = current_page.handle_events(event)
 
-            if flag == "game_mode_page":
+            if flag == "quit":
+                sys.exit()
+            elif flag == "game_mode_page":
                 pass
-            elif flag == "mainmenu_page":
+            elif flag == "main_menu_page":
                 current_page = mainmenu_page
+            elif flag == "how_to_play_page":
+                current_page = how_to_play_page
 
 
         # Draw the current page elements
