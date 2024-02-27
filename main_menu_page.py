@@ -41,6 +41,8 @@ class MainMenu():
                 return "how_to_play_page"
             if self.quit_button.rect.collidepoint(event.pos):
                 return 'quit'
+            
+            
     def draw(self):
         # Draw the main menu page
         self.screen.blit(self.settings.background_img, (0, 0))
