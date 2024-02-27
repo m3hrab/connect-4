@@ -18,24 +18,25 @@ class Settings():
 
 class Button():
 
-    def __init__(self, screen, text, x, y, color=(255, 255, 255), hover_color=(255, 0, 0)):
+    def __init__(self, screen, text, x, y,width=400, height=60, font_size=32):
         self.screen = screen
         self.text = text
         self.x = x
         self.y = y
+        self.width = width
+        self.height = height
         self.is_hover = False
-        self.button_font = pygame.font.Font('assets/fonts/Akira.otf', 32)
+        self.button_font = pygame.font.Font('assets/fonts/Akira.otf', font_size)
 
-        self.rect = pygame.Rect(self.x, self.y, 400, 60)
-        
-        self.text_pos = (self.x + 200, self.y + 30)
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.text_pos = (self.x + width//2, self.y + self.height//2)
 
     def draw(self):
         pygame.draw.rect(self.screen, (255,255,255), self.rect)
-        pygame.draw.rect(self.screen, (255, 0, 0), (self.x+5, self.y+5, 390, 50))
+        pygame.draw.rect(self.screen, (255, 0, 0), (self.x+5, self.y+5, self.width - 10 , self.height - 10))
 
         if self.is_hover:
-            text = self.button_font.render(self.text, True, (228, 208, 10))
+            text = self.button_font.render(self.text, True, 'white')
         else:
             text = self.button_font.render(self.text, True, 'yellow')
             

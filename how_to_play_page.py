@@ -8,7 +8,6 @@ class HowToPlay():
         self.settings = settings
         self.screen = screen
 
-
         # buttons 
         self.back_button = Button(self.screen, 'Back', 20, 20, 100, 60, 20)
 
