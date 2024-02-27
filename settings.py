@@ -14,6 +14,7 @@ class Settings():
         # Font settings
         self.custom_font1 = pygame.font.Font('assets/fonts/arial.ttf', 32)
         self.custom_font2 = pygame.font.Font('assets/fonts/Stopbuck.ttf', 18)
+        self.custom_font3 = pygame.font.Font('assets/fonts/arial.ttf', 24)
 
 
 class Button():
