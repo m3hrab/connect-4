@@ -4,10 +4,9 @@ from settings import Button
 import random
 from two_player_game import Player, Board 
 
-class AIBotGame:
+class AIBotGame():
 
     def __init__(self, screen, settings):
-
         # Initialzie the AI Bot game page attributes
         self.screen = screen
         self.settings = settings
