@@ -41,10 +41,13 @@ class GameMode():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.two_players_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 return "two_players_game_page"
             if self.ai_bot_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 return "ai_bot_game_page"
             if self.back_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 return "main_menu_page"
             
     def draw(self):

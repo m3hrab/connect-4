@@ -36,10 +36,13 @@ class MainMenu():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.start_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 return "game_mode_page"
             if self.how_to_play_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 return "how_to_play_page"
             if self.quit_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 return 'quit'
             
             

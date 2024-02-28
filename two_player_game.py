@@ -71,9 +71,11 @@ class TwoPlayerGame():
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
             if (mouse_pos[0] >= 20 and mouse_pos[0] <= (int(6*85+85/2) + 40)) and not self.timer_paused: # Check if the mouse is within the game board
+                self.settings.piece_drop_sound.play()
                 column = (mouse_pos[0] - 20) // self.settings.cell_size # Get the column index
                 if self.current_player.make_move(self.board, column, self.piece): # Make a move(drop piece on the board) if the move is valid
                     if self.board.get_winner(): # check if there is connect-4
+                        self.settings.game_over_sound.play()
                         self.winner = self.current_player.name
                         self.draw()
                         pygame.display.flip()
@@ -82,6 +84,7 @@ class TwoPlayerGame():
                         return 'game_over_page'
                 
                     if self.board.is_full():
+                        self.settings.game_over_sound.play()
                         self.winner = None
                         self.draw()
                         pygame.display.flip()
@@ -94,6 +97,7 @@ class TwoPlayerGame():
             
             # Buttons
             if self.pause_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 self.timer_paused = not self.timer_paused
                 if self.pause_button.text == 'Pause':
                     self.pause_button.text = 'Resume'
@@ -103,6 +107,7 @@ class TwoPlayerGame():
                     self.pause_button.color = (0, 255, 0)
 
             if self.back_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 self.reset()
                 return 'main_menu_page'
 

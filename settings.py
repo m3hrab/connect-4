@@ -25,6 +25,15 @@ class Settings():
         #(222, 226, 230)
 
 
+        # game Sound
+        self.button_click_sound = pygame.mixer.Sound('assets/sounds/button_click.mp3')
+        self.button_click_sound.set_volume(0.5)
+        self.piece_drop_sound = pygame.mixer.Sound('assets/sounds/drop_sound.mp3')
+        self.piece_drop_sound.set_volume(0.5)
+        self.game_over_sound = pygame.mixer.Sound('assets/sounds/game_over.mp3')
+        # self.piece_drop_sound = pygame.mixer.Sound('assets/sounds/piece_drop.wav')
+
+
 class Button():
 
     def __init__(self, screen, text, x, y,width=400, height=60, font_size=32, color=None):

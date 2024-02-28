@@ -28,6 +28,7 @@ class GameOver():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.back_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 return "main_menu_page"
             
     def draw(self):

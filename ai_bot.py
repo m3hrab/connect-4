@@ -30,7 +30,7 @@ class AIBotGame:
         self.time_left = 30
         self.flag = False
         self.wait_time_flag = False
-        self.turn_wait_time = random.randint(20, 28)
+        self.turn_wait_time = random.randint(26, 29)
 
         # Font attributes
         self.font = pygame.font.Font('assets/fonts/Akira.otf', 18)
@@ -71,6 +71,7 @@ class AIBotGame:
             if (20 <= mouse_pos[0] <= int(6*self.settings.cell_size+85/2) + 40) and not self.timer_paused:
                 column = (mouse_pos[0] - 20) // self.settings.cell_size # Get the column index
 
+                self.settings.piece_drop_sound.play()
                 if self.current_player.make_move(self.board, column, self.piece): 
                     if self.board.get_winner():
                         self.winner = self.current_player.name
@@ -92,11 +93,13 @@ class AIBotGame:
 
             # Buttons
             if self.pause_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 self.timer_paused = not self.timer_paused
                 self.pause_button.text = 'Resume' if self.pause_button.text == 'Pause' else 'Pause'
                 self.pause_button.color = (255, 0, 0) if self.pause_button.text == 'Resume' else (0, 255, 0)
 
             if self.back_button.rect.collidepoint(event.pos):
+                self.settings.button_click_sound.play()
                 self.reset()
                 return 'main_menu_page'
 
@@ -111,13 +114,15 @@ class AIBotGame:
         # AI player move
         if self.current_player == self.players[1]:
             if not self.wait_time_flag:
-                self.turn_wait_time = random.randint(20, 28)
+                self.turn_wait_time = random.randint(26, 29)
                 self.wait_time_flag = True
 
             if self.time_left < self.turn_wait_time:
                 column = self.pick_best_move()
+                self.settings.piece_drop_sound.play()
                 if self.current_player.make_move(self.board, column, self.piece):
                     if self.board.get_winner():
+                        self.settings.game_over_sound.play()
                         self.winner = self.current_player.name
                         self.draw()
                         pygame.display.flip()
@@ -126,6 +131,7 @@ class AIBotGame:
                         return 'game_over_page'
                     
                     if self.board.is_full():
+                        self.settings.game_over_sound.play()
                         self.winner = None
                         self.draw()
                         pygame.display.flip()
