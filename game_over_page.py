@@ -35,7 +35,7 @@ class GameOver():
         self.screen.blit(self.settings.background_img, (0, 0))
         
         if self.winner is not None:
-            text = self.font.render(f'{self.winner.name} wins!', True, 'yellow')
+            text = self.font.render(f'{self.winner} WON!', True, 'yellow')
         else:
             text = self.font.render('Draw', True, 'yellow')
 

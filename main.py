@@ -8,6 +8,7 @@ from how_to_play_page import HowToPlay
 from game_mode_page import GameMode
 from two_player_game import TwoPlayerGame
 from game_over_page import GameOver
+from ai_bot import AIBotGame
 
 def run_game():
     pygame.init()
@@ -23,10 +24,14 @@ def run_game():
     game_mode_page = GameMode(screen, settings)
     two_player_game_page = TwoPlayerGame(screen, settings)
     game_over_page = GameOver(screen, settings)
+    ai_bot_game_page = AIBotGame(screen, settings)
 
     # Set the current page
     current_page = mainmenu_page
 
+    # temp
+    previous_page = None    
+    
     # Main game loop
     while True:
 
@@ -47,9 +52,16 @@ def run_game():
                 current_page = how_to_play_page
             elif flag == "two_players_game_page":
                 current_page = two_player_game_page
+                previous_page ='two_players_game_page'
+            elif flag == "ai_bot_game_page":
+                current_page = ai_bot_game_page
+                previous_page = 'ai_bot_game_page'
             elif flag == "game_over_page":
+                if previous_page == 'two_players_game_page':
+                    game_over_page.winner = two_player_game_page.winner # Update the winner 
+                elif previous_page == 'ai_bot_game_page':
+                    game_over_page.winner = ai_bot_game_page.winner # Update the winner
                 current_page = game_over_page
-                current_page.winner = two_player_game_page.winner
 
 
 
