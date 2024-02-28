@@ -41,9 +41,9 @@ class GameMode():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.two_players_button.rect.collidepoint(event.pos):
-                return "two_players_game"
+                return "two_players_game_page"
             if self.ai_bot_button.rect.collidepoint(event.pos):
-                return "ai_bot_game"
+                return "ai_bot_game_page"
             if self.back_button.rect.collidepoint(event.pos):
                 return "main_menu_page"
             

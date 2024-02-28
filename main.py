@@ -6,6 +6,8 @@ from settings import Settings
 from main_menu_page import MainMenu
 from how_to_play_page import HowToPlay
 from game_mode_page import GameMode
+from two_player_game import TwoPlayerGame
+from game_over_page import GameOver
 
 def run_game():
     pygame.init()
@@ -19,6 +21,8 @@ def run_game():
     mainmenu_page = MainMenu(screen, settings)
     how_to_play_page = HowToPlay(screen, settings)
     game_mode_page = GameMode(screen, settings)
+    two_player_game_page = TwoPlayerGame(screen, settings)
+    game_over_page = GameOver(screen, settings)
 
     # Set the current page
     current_page = mainmenu_page
@@ -41,6 +45,11 @@ def run_game():
                 current_page = mainmenu_page
             elif flag == "how_to_play_page":
                 current_page = how_to_play_page
+            elif flag == "two_players_game_page":
+                current_page = two_player_game_page
+            elif flag == "game_over_page":
+                current_page = game_over_page
+                current_page.winner = two_player_game_page.winner
 
 
 

@@ -17,9 +17,17 @@ class Settings():
         self.custom_font3 = pygame.font.Font('assets/fonts/arial.ttf', 24)
 
 
+        # Game board settings
+        self.rows = 6
+        self.columns = 7
+        self.cell_size = 85
+        self.radius = 30
+        #(222, 226, 230)
+
+
 class Button():
 
-    def __init__(self, screen, text, x, y,width=400, height=60, font_size=32):
+    def __init__(self, screen, text, x, y,width=400, height=60, font_size=32, color=None):
         self.screen = screen
         self.text = text
         self.x = x
@@ -32,9 +40,18 @@ class Button():
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.text_pos = (self.x + width//2, self.y + self.height//2)
 
+        self.color = color
+
+
+
     def draw(self):
-        pygame.draw.rect(self.screen, (255,255,255), self.rect)
-        pygame.draw.rect(self.screen, (255, 0, 0), (self.x+5, self.y+5, self.width - 10 , self.height - 10))
+
+        if self.color is not None:
+            pygame.draw.rect(self.screen, (255, 255, 255), self.rect)
+            pygame.draw.rect(self.screen, self.color, (self.x+5, self.y+5, self.width - 10 , self.height - 10))
+        else:
+            pygame.draw.rect(self.screen, (255,255,255), self.rect)
+            pygame.draw.rect(self.screen, (255, 0, 0), (self.x+5, self.y+5, self.width - 10 , self.height - 10))
 
         if self.is_hover:
             text = self.button_font.render(self.text, True, 'white')
